@@ -1,5 +1,11 @@
 apply plugin: 'com.android.application'
 
+def releaseKeystorePath = System.getenv('PINSCAN_KEYSTORE')
+def releaseStorePassword = System.getenv('PINSCAN_STORE_PASSWORD')
+def releaseKeyAlias = System.getenv('PINSCAN_KEY_ALIAS')
+def releaseKeyPassword = System.getenv('PINSCAN_KEY_PASSWORD')
+def hasReleaseSigning = [releaseKeystorePath, releaseStorePassword, releaseKeyAlias, releaseKeyPassword].every { it }
+
 android {
     namespace = "com.raven.pinscan"
     compileSdk = rootProject.ext.compileSdkVersion
@@ -18,6 +24,14 @@ android {
     }
     buildTypes {
         release {
+            if (hasReleaseSigning) {
+                signingConfig signingConfigs.create('releaseKey') {
+                    storeFile file(releaseKeystorePath)
+                    storePassword releaseStorePassword
+                    keyAlias releaseKeyAlias
+                    keyPassword releaseKeyPassword
+                }
+            }
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
