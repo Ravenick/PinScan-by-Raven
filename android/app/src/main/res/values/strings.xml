@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">PinScan</string>
+    <string name="title_activity_main">PinScan</string>
+    <string name="package_name">com.raven.pinscan</string>
+    <string name="custom_url_scheme">com.raven.pinscan</string>
+</resources>
