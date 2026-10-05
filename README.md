@@ -6,7 +6,7 @@
 
 ## Download
 
-**APK release:** [Add the PinScan v1 APK release link here](#)
+**APK release:** [Download PinScan v1.0.0](https://github.com/Ravenick/PinScan-by-Raven/releases/download/v1.0.0/app-release.apk)
 
 ## Features
 
